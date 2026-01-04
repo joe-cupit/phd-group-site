@@ -1,0 +1,90 @@
+---
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import Layout from "./Layout.astro";
+
+import ExampleImage from "../assets/example-image.png";
+import PublicationsList from "../components/PublicationsList.astro";
+
+type Props = {
+  slug: string
+} & CollectionEntry<"group">["data"];
+
+const { slug, name, position, email, profileImage, links } = Astro.props;
+---
+
+<Layout gap="2rem">
+  <section>
+    <div class="hero">
+      <div class="side">
+        <div class="profile-image">
+          <Image src={profileImage ?? ExampleImage} alt={name} />
+        </div>
+        <a href={`mailto:${email}`}>{email}</a>
+        {links &&
+          <ul>
+            {Object.keys(links).map((lname: string) =>
+              <li><a href={links[lname]} target="_blank">{lname}</a></li>
+            )}
+          </ul>
+        }
+      </div>
+      <div class="main">
+        <div>
+          <p class="position">{position}</p>
+          <h1 class="name">{name}</h1>
+        </div>
+        <div class="md">
+          <slot />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="publications-section">
+    <h2>Publications</h2>
+    
+    <PublicationsList filterAuthor={slug} />
+  </section>
+
+  <style>
+    .hero {
+      display: grid;
+      grid-template-columns: 280px auto;
+      gap: 4ch;
+    }
+
+    .profile-image {
+      background: #0002;
+      width: 100%;
+      aspect-ratio: 3 / 4;
+
+      border-radius: 0.25rem;
+    }
+    .main {
+      display: grid;
+      grid-template-rows: min-content;
+      gap: 1.25rem;
+      padding-block: 0.5rem;
+    }
+    .position {
+      font-weight: 400;
+      line-height: 1.1;
+    }
+    .name {
+      font-size: 3rem;
+      /* font-weight: 400; */
+      line-height: 1.1;
+    }
+
+    .publications-section {
+      margin-block-start: 3rem;
+
+      & h2 {
+        font-size: 1rem;
+        font-weight: 500;
+        text-transform: uppercase;
+      }
+    }
+  </style>
+</Layout>

@@ -160,3 +160,32 @@ a {
 a:hover {
   color: var(--clr-primary-dark);
 }
+
+img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.md {
+  & p {
+    padding-block-end: 0.5lh;
+  }
+  & h1,
+  & h2,
+  & h3,
+  & h4,
+  & h5,
+  & h6 {
+    font-family: var(--ff-body);
+    font-weight: 600;
+    margin-block-start: 0.1lh;
+  }
+  & h2 {
+    font-size: 1.375rem;
+  }
+  & h3 {
+    font-size: 1.125rem;
+  }
+}

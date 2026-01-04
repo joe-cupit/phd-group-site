@@ -1,0 +1,51 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import Person from "../../components/Person.astro";
+
+const people = await getCollection("group");
+
+const featuredId = "dongda-zhang";
+const featured = people.find(p => p.id === featuredId)
+const group = people.filter(p => p.id !== featuredId)
+---
+
+<Layout>
+    <section style="background: var(--clr-bg-dark); padding-block: calc(var(--page-padding) * 1.5)">
+        {featured &&
+            <Person person={featured} featured={true} />
+        }
+    </section>
+    <section>
+        <h2 class="group-title">The Group</h2>
+        <ul>
+            {group.map((person) => 
+                <li><Person person={person} /></li>
+            )}
+        </ul>
+    </section>
+
+    <style>
+        hr {
+            margin-block: 1rem;
+        }
+
+        .group-title {
+            margin-inline: auto;
+            text-align: center;
+            text-transform: uppercase;
+            font-weight: 500;
+            font-size: 1.25rem;
+
+            margin-block: 2.5rem 1.5rem;
+        }
+
+        ul {
+            display: grid;
+            gap: 4rem;
+            list-style-type: none;
+            width: min(1020px, 100%);
+            margin-inline: auto;
+        }
+    </style>
+</Layout>

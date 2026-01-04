@@ -1,0 +1,105 @@
+---
+import { Image } from "astro:assets";
+import ExampleImage from "../assets/example-image.png";
+
+const { person, featured } = Astro.props;
+---
+
+<article class={"person" + (featured ? " featured" : "")}>
+    <a href={`/group/${person.id}`} class="image">
+        <Image src={person.data.profileImage ?? ExampleImage} alt="" />
+    </a>
+
+    <div class="main">
+        <div>
+            {featured
+                ? <h2 class="position">{person.data.position}</h2>
+                : <p class="position">{person.data.position}</p>
+            }
+            <a href={`/group/${person.id}`}>
+                <h3 class="name">{person.data.name}</h3>
+            </a>
+        </div>
+        <div class="md">
+            {person.data.summary?.split("\\n").map((p: string) => <p>{p}</p>)}
+        </div>
+        <!-- <a href={`mailto:${person.data.email}`} class="email">
+            {person.data.email}
+        </a> -->
+    </div>
+</article>
+
+<style>
+    .person {
+        container-type: inline-size;
+
+        display: flex;
+        align-items: start;
+        /* grid-template-columns: min(250px, 40%) auto; */
+        gap: clamp(1.5rem, 4vw, 2rem);
+    }
+    .person.featured {
+        /* grid-template-columns: 330px auto; */
+    }
+
+    .main {
+        display: grid;
+        grid-auto-rows: min-content;
+        padding-block: 0.25rem;
+        gap: 1rem;
+        flex: 1;
+    }
+    .person.featured .main {
+        /* padding-block: 1rem; */
+    }
+
+    a:has(.name) {
+        width: fit-content;
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .image {
+        width: clamp(100px, 30%, 240px);
+        aspect-ratio: 4 / 5;
+        background: #0001;
+        border-radius: 0.25rem;
+    }
+    .person.featured .image {
+        width: clamp(100px, 35%, 340px);
+        aspect-ratio: 5 / 6;
+    }
+    @media (max-width: 41rem) {
+        .person {
+            display: grid;
+            gap: 2rem;
+            justify-items: center;
+        }
+        .person.featured .image,
+        .image {
+            width: 100%;
+            max-width: 20rem;
+        }
+    }
+
+    .position {
+        font-family: var(--ff-body);
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.2;
+    }
+    .person.featured .position {
+        font-size: inherit;
+    }
+
+    .name {
+        line-height: 1;
+        font-size: 2.5rem;
+        font-weight: 700;
+    }
+
+    .email {
+        /* font-size: 1.125rem; */
+        text-decoration: underline;
+    }
+</style>
