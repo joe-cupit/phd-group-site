@@ -1,7 +1,135 @@
 ---
 import Layout from "../layouts/Layout.astro";
+
+import Button from "../components/Button.astro";
+import PublicationsList from "../components/PublicationsList.astro";
 ---
 
 <Layout>
-	<h1></h1>
+  <section style="padding-block: 0;">
+    <div class="hero">
+      <h1>Applying Data Intelligence to Accelerate Chemical Process Digital Transformation</h1>
+      <Button href="/research">Find out more</Button>
+    </div>
+  </section>
+
+  <section>
+    <div class="about">
+      <div class="text">
+        <p>We are a group of researchers at the University of Manchester combining process systems engineering with interpretable machine learning for data-driven decision making in complex chemical and biochemical processes.</p>
+        <Button href="/about">More about us</Button>
+      </div>
+      <div class="photo"></div>
+    </div>
+  </section>
+
+  <section class="research-section">
+    <h2>Research Areas</h2>
+    <div class="research">
+      <div class="research-area">
+        <h3>Digital twin modelling</h3>
+        <p>Hybrid model based digital twins for bioprocess predictive modelling, optimisation, control, and metabolic network simulation.</p>
+        <Button href="/research/digital-twin-modelling">Find out more</Button>
+      </div>
+      <div class="research-area">
+        <h3>Data-driven processes</h3>
+        <p>Machine learning enabled data-driven techniques for industrial manufacturing process quality control and process flow diagram development.</p>
+        <Button href="/research/digital-twin-modelling">Find out more</Button>
+      </div>
+      <div class="research-area">
+        <h3>Interpretable AI</h3>
+        <p>Interpretable AI based frameworks to discover physical knowledge and generate mechanistic expressions for reaction engineering applications.</p>
+        <Button href="/research/digital-twin-modelling">Find out more</Button>
+      </div>
+    </div>
+  </section>
+
+  <section class="publications-section">
+    <h2>Recent Publications</h2>
+    <PublicationsList limit={4} />
+    <Button href="/publications">See more publications</Button>
+  </section>
 </Layout>
+
+<style>
+  section {
+    --content-max-width: 1350px;
+  }
+  h2 {
+    font-size: 1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+
+  .hero {
+    display: grid;
+    align-content: center;
+    justify-items: center;
+    text-align: center;
+    gap: 2rem;
+
+    height: clamp(30rem, 80svh, 50rem);
+    padding-block-end: 5%;
+
+    & h1 {
+      max-width: 28ch;
+      font-size: 2.5rem;
+      font-weight: 700;
+    }
+  }
+
+  .about {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 3rem;
+    align-content: center;
+    justify-items: center;
+
+    & .text {
+      display: grid;
+      gap: 0.5lh;
+      align-content: center;
+
+      font-family: var(--ff-heading);
+      font-weight: 500;
+      font-size: 1.5rem;
+
+      padding-block: 1rem;
+    }
+    & .photo {
+      background: var(--clr-bg-dark);
+      width: 100%;
+      aspect-ratio: 4 / 3;
+    }
+  }
+
+  .research-section {
+    padding-block: 9rem;
+  }
+  .research {
+    display: grid;
+    gap: 4rem;
+    margin-block-start: 0.5rem;
+  }
+  .research-area {
+    display: grid;
+
+    & h3 {
+      font-family: var(--ff-heading);
+      font-size: 2rem;
+    }
+    & a {
+      margin-block-start: 1rem;
+    }
+  }
+
+  .publications-section {
+    --content-max-width: 900px;
+    gap: 1.75rem;
+    justify-items: center;
+
+    & h2 {
+      justify-self: left;
+    }
+  }
+</style>

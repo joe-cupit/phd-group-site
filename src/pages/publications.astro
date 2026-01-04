@@ -1,0 +1,70 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+import PublicationsList from "../components/PublicationsList.astro";
+---
+
+<Layout>
+    <section>
+        <h1>Featured Publications</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut cursus  volutpat nulla, quis convallis augue pellentesque a. Donec facilisis  volutpat magna, sit amet gravida erat maximus et. Nullam at elementum  orci.</p>
+
+        <div>
+            <a href="/publications#2026">2026</a> |
+            <a href="/publications#2025">2025</a> |
+            <a href="/publications#2024">2024</a> |
+            <a href="/publications#2023">2023</a> |
+            <a href="/publications#2022">2022</a> |
+            <a href="/publications#2021">2021</a>
+        </div>
+    </section>
+
+    <section class="year-section">
+        <h2 id="2025">2026</h2>
+        <PublicationsList year={2026} />
+    </section>
+
+    <section class="year-section">
+        <h2 id="2025">2025</h2>
+        <PublicationsList year={2025} />
+    </section>
+
+    <section class="year-section">
+        <h2 id="2024">2024</h2>
+        <PublicationsList year={2024} />
+    </section>
+</Layout>
+
+<style>
+    section {
+        --content-max-width: 1050px;
+    }
+    .year-section {
+        margin-block-start: 3rem;
+        --content-max-width: 900px;
+    }
+
+    h1 {
+        font-size: 3rem;
+    }
+    h2 {
+        display: flex;
+        align-items: baseline;
+        gap: 0.75ch;
+
+        font-family: var(--ff-body);
+        font-weight: 600;
+        font-size: 1.5rem;
+        text-transform: uppercase;
+        margin-block-end: 1lh;
+
+        &::after {
+            content: "";
+            display: block;
+            height: 2px;
+            flex: 1;
+            background: currentColor;
+        }
+    }
+
+</style>
