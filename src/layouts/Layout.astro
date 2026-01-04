@@ -1,0 +1,23 @@
+---
+import "../styles/global.css";
+
+import LayoutHead from "../components/LayoutHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+const { title, description, gap } = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<LayoutHead title={title} description={description} />
+	</head>
+
+	<body>
+		<Header />
+		<main style={gap ? `gap: ${gap}` : ""}>
+			<slot />
+		</main>
+		<Footer />
+	</body>
+</html>

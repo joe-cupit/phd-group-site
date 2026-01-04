@@ -1,0 +1,63 @@
+---
+import { SITE_TITLE } from '../consts';
+---
+
+<div class="ribbon">
+	Ribbon text
+</div>
+<header>
+	<nav>
+		<h2><a href="/">{SITE_TITLE}</a></h2>
+		<div class="internal-links">
+			<a href="/">Home</a>
+			<a href="/research">Research</a>
+			<a href="/publications">Publications</a>
+			<a href="/group">Group</a>
+			<a href="/about">Join us</a>
+		</div>
+	</nav>
+</header>
+<style>
+	header {
+		position: sticky;
+		top: 0;
+		background: var(--clr-bg);
+	}
+	h2 {
+		font-size: 1em;
+	}
+	a {
+		text-decoration: none;
+		color: inherit;
+	}
+
+	.ribbon {
+		color: var(--clr-bg);
+		background: var(--clr-primary);
+		padding-inline: 2rem;
+		padding-block: 0.5rem;
+		text-align: right;
+		font-size: 0.9rem;
+
+		a {
+			color: inherit;
+			text-decoration: underline;
+		}
+	}
+	nav {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding-block: 1rem;
+		padding-inline: 2rem;
+	}
+	.internal-links {
+		display: flex;
+		align-items: center;
+		gap: 1.5rem;
+
+		a:hover {
+			font-weight: 500;
+		}
+	}
+</style>
