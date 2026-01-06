@@ -3,6 +3,11 @@ import Layout from "../layouts/Layout.astro";
 
 import Button from "../components/Button.astro";
 import PublicationsList from "../components/PublicationsList.astro";
+
+import { Image } from "astro:assets";
+import UnileverLogo from "../assets/logos/unilever.svg";
+import CrodaLogo from "../assets/logos/croda.png";
+import BPLogo from "../assets/logos/bp.png";
 ---
 
 <Layout>
@@ -49,6 +54,15 @@ import PublicationsList from "../components/PublicationsList.astro";
     <PublicationsList limit={4} />
     <Button href="/publications">See more publications</Button>
   </section>
+
+  <section class="industrial-collaborators">
+    <h2>Inustrial Collaborators</h2>
+    <div class="industrial-logos">
+      <Image src={UnileverLogo} alt="Unilever Logo" />
+      <Image src={CrodaLogo} alt="Croda Logo" style="max-height: 50%" />
+      <Image src={BPLogo} alt="BP Logo" />
+    </div>
+  </section>
 </Layout>
 
 <style>
@@ -92,7 +106,7 @@ import PublicationsList from "../components/PublicationsList.astro";
 
       font-family: var(--ff-heading);
       font-weight: 500;
-      font-size: 1.5rem;
+      font-size: 1.625rem;
 
       padding-block: 1rem;
     }
@@ -130,6 +144,23 @@ import PublicationsList from "../components/PublicationsList.astro";
 
     & h2 {
       justify-self: left;
+    }
+  }
+
+  .industrial-collaborators {
+    justify-items: center;
+    padding-block: 6rem;
+  }
+  .industrial-logos {
+    display: flex;
+    align-items: center;
+    gap: 6rem;
+    height: 5rem;
+    margin-block-start: 1rem;
+
+    & img {
+      object-fit: contain;
+      width: fit-content;
     }
   }
 </style>

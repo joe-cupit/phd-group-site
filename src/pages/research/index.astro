@@ -1,0 +1,65 @@
+---
+import Button from "../../components/Button.astro";
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout>
+    <section>
+        <h1>Our Research</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut cursus  volutpat nulla, quis convallis augue pellentesque a. Donec facilisis  volutpat magna, sit amet gravida erat maximus et. Nullam at elementum  orci.</p>
+    </section>
+
+    <section class="research-section">
+        <div class="research">
+            <div class="research-area">
+                <h2>Digital twin modelling</h2>
+                <p>Hybrid model based digital twins for bioprocess predictive modelling, optimisation, control, and metabolic network simulation.</p>
+                <Button href="/research/digital-twin-modelling">Find out more</Button>
+            </div>
+            <div class="research-area">
+                <h2>Data-driven processes</h2>
+                <p>Machine learning enabled data-driven techniques for industrial manufacturing process quality control and process flow diagram development.</p>
+                <Button href="/research/digital-twin-modelling">Find out more</Button>
+            </div>
+            <div class="research-area">
+                <h2>Interpretable AI</h2>
+                <p>Interpretable AI based frameworks to discover physical knowledge and generate mechanistic expressions for reaction engineering applications.</p>
+                <Button href="/research/digital-twin-modelling">Find out more</Button>
+            </div>
+        </div>
+    </section>
+</Layout>
+
+<style>
+    h1 {
+        font-size: 4rem;
+    }
+
+    .research-section {
+        padding-block: 5rem;
+    }
+    .research {
+        display: grid;
+        gap: 6rem;
+        margin-block-start: 0.5rem;
+    }
+    .research-area {
+        display: grid;
+        gap: 1rem;
+
+        & h3 {
+            font-family: var(--ff-heading);
+            font-size: 2rem;
+        }
+        & a {
+            margin-block-start: 1rem;
+        }
+        & p {
+            max-width: 62ch;
+        }
+    }
+    .research-area:nth-child(2n) {
+        justify-items: right;
+        text-align: right;
+    }
+</style>

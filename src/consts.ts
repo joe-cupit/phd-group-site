@@ -1,1 +1,1 @@
-export const SITE_TITLE = "Dongda Zhang Group";
+export const SITE_TITLE = "Dongda Zhang Research Group";
