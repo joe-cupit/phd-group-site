@@ -34,4 +34,20 @@ const publications = defineCollection({
     }),
 });
 
-export const collections = { group, publications };
+const research = defineCollection({
+  loader: glob({
+    base: "./src/content/research",
+    pattern: "**/*.{md,mdx}",
+  }),
+
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      shortTitle: z.string(),
+      summary: z.string(),
+      pos: z.number(),
+      coverImage: image().optional(),
+    }),
+});
+
+export const collections = { group, publications, research };

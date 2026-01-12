@@ -5,10 +5,7 @@ import Button from "../components/Button.astro";
 import PublicationsList from "../components/PublicationsList.astro";
 
 import { Image } from "astro:assets";
-import Image11 from "../assets/1.1.png";
-import Image21 from "../assets/2.1.png";
-import Image31 from "../assets/3.1.png";
-import Image41 from "../assets/4.1.png";
+import { getCollection } from "astro:content";
 
 import UnileverLogo from "../assets/logos/unilever.svg";
 import CrodaLogo from "../assets/logos/croda.png";
@@ -17,6 +14,8 @@ import AppliedMaterialsLogo from "../assets/logos/applied-materials.png";
 import CPACTLogo from "../assets/logos/cpact.png";
 import KeitLogo from "../assets/logos/keit-industrial-analytics.png";
 import JohnsonMattheyLogo from "../assets/logos/johnson-matthey.svg";
+
+const researchAreas = (await getCollection("research")).sort((a, b) => a.data.pos - b.data.pos);
 ---
 
 <Layout>
@@ -46,38 +45,18 @@ import JohnsonMattheyLogo from "../assets/logos/johnson-matthey.svg";
   <section class="research-section">
     <h2 class="caps-title">Research Areas</h2>
     <div class="research">
-      <div class="research-area">
-        <div class="text">
-          <h3>Scientific machine learning for modelling and optimisation</h3>
-          <p>We develop predictive hybrid models that integrate physical knowledge with machine learning to represent complex chemical and biochemical systems. These models underpin dynamic optimisation and control strategies that improve process performance and robustness under uncertainty.</p>
-          <Button href="/research/machine-learning">Find out more</Button>
-        </div>
-        <Image src={Image11} alt="" />
-      </div>
-      <div class="research-area reversed">
-        <div class="text">
-          <h3>Augmented intelligence and self-driving laboratories for knowledge discovery</h3>
-          <p>We combine interpretable AI with model-based experimental design to accelerate mechanistic understanding, reaction kinetics identification, and system knowledge discovery. This enables rapid process development and upscaling with minimal experimental trials.</p>
-          <Button href="/research/self-driving-laboratories">Find out more</Button>
-        </div>
-        <Image src={Image21} alt="" />
-      </div>
-      <div class="research-area">
-        <div class="text">
-          <h3>Industrial data analytics for process monitoring and decision-making</h3>
-          <p>We apply data-driven and statistical modelling to extract actionable insights from industrial process data for monitoring, fault diagnosis, and predictive maintenance. Our methods support adaptive decision-making and operational space design to enhance flexibility, robustness, and quality by design.</p>
-          <Button href="/research/industrial-data-analytics">Find out more</Button>
-        </div>
-        <Image src={Image31} alt="" />
-      </div>
-      <div class="research-area reversed">
-        <div class="text">
-          <h3>Generative AI for sustainable chemistry discovery and design</h3>
-          <p>We develop generative and multimodal AI models to enable inverse design of formulations and materials with sustainability embedded from the outset. Our work also advances chemical property prediction and sustainable synthesis pathway planning for next-generation chemical products.</p>
-          <Button href="/research/generative-ai">Find out more</Button>
-        </div>
-        <Image src={Image41} alt="" />
-      </div>
+      {researchAreas.map((area, index) => {
+        return (
+          <div class={"research-area" + (index % 2 !== 0 ? " reversed" : "")}>
+            <div class="text">
+              <h3>{area.data.title}</h3>
+              <p>{area.data.summary}</p>
+              <Button href={`/research/${area.id}`}>Find out more</Button>
+            </div>
+            {area.data.coverImage && <Image src={area.data.coverImage} alt={area.data.title} />}
+          </div>
+        )
+      })}
     </div>
   </section>
 
@@ -119,9 +98,9 @@ import JohnsonMattheyLogo from "../assets/logos/johnson-matthey.svg";
 
     & h1 {
       max-width: 35ch;
-      font-size: clamp(2rem, 4vw, 3rem);
+      font-size: clamp(2rem, 4vw, 2.75rem);
       /* font-size: 3.5vw; */
-      font-weight: 600;
+      font-weight: 700;
 
       & span {
         color: var(--clr-primary);

@@ -1,5 +1,8 @@
 ---
+import { getCollection } from 'astro:content';
 import { SITE_TITLE } from '../consts';
+
+const researchAreas = (await getCollection("research")).sort((a, b) => a.data.pos - b.data.pos);
 ---
 
 <footer>
@@ -9,10 +12,11 @@ import { SITE_TITLE } from '../consts';
 			<div>
 				<h3 class="caps-title">Research Areas</h3>
 				<ul>
-					<li><a href="/research/machine-learning">Scientific machine learning</a></li>
-					<li><a href="/research/self-driving-laboratories">Augmented intelligence</a></li>
-					<li><a href="/research/industrial-data-analytics">Industrial data analytics</a></li>
-					<li><a href="/research/generative-ai">Generative AI</a></li>
+					{researchAreas.map((researchArea) => {
+						return (
+							<li><a href={`/research/${researchArea.id}`}>{researchArea.data.shortTitle}</a></li>
+						)
+					})}
 				</ul>
 			</div>
 			<div>

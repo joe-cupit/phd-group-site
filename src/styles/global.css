@@ -213,6 +213,13 @@ svg {
   & h3 {
     font-size: 1.125rem;
   }
+
+  & img {
+    mix-blend-mode: multiply;
+    width: 100%;
+    border: 2px solid currentColor;
+    padding: 1ch;
+  }
 }
 
 .caps-title {
