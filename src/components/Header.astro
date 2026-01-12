@@ -1,11 +1,14 @@
 ---
-import { SITE_TITLE } from '../consts';
+import { SITE_TITLE } from "../consts";
+
+import MenuIcon from "../assets/icons/MenuIcon.astro";
+import CloseIcon from "../assets/icons/CloseIcon.astro";
+import { getCollection } from "astro:content";
+
+const researchAreas = (await getCollection("research")).sort((a, b) => a.data.pos - b.data.pos);
 ---
 
-<!-- <div class="ribbon page-grid">
-	<p>Ribbon text</p>
-</div> -->
-<header>
+<header id="header">
 	<nav>
 		<h2><a href="/">{SITE_TITLE}</a></h2>
 		<div class="internal-links">
@@ -15,52 +18,78 @@ import { SITE_TITLE } from '../consts';
 			<a href="/group" data-text="Group">Group</a>
 			<a href="/publications" data-text="Publications">Publications</a>
 		</div>
+		<button class="mobile-button" onclick="document.getElementById('mobile-nav').dataset.open = 'true'">
+			<MenuIcon />
+		</button>
 	</nav>
+	
+	<div id="mobile-nav" class="mobile-nav" data-open={false}>
+		<button class="mobile-button" onclick="document.getElementById('mobile-nav').dataset.open = 'false'">
+			<CloseIcon />
+		</button>
+
+		<ul>
+			<li><a href="/" data-text="Home">Home</a></li>
+			<li><a href="/about" data-text="About">About</a></li>
+			<li>
+				<a href="/research" data-text="Research">Research</a>
+				<ul>
+					{researchAreas.map((researchArea) => {
+						return (
+							<li><a href={`/research/${researchArea.id}`}>{researchArea.data.shortTitle}</a></li>
+						)
+					})}
+				</ul>
+			</li>
+			<li><a href="/group" data-text="Group">Group</a></li>
+			<li><a href="/publications" data-text="Publications">Publications</a></li>
+		</ul>
+	
+		<!-- <p>{SITE_TITLE}</p> -->
+	</div>
 </header>
+
+
 <style>
 	header {
-		position: sticky;
+		--_transition-duration: 200ms;
+
+		position: fixed;
 		top: 0;
-		background: var(--clr-bg);
 		z-index: calc(infinity);
+
+		height: 5.5rem;
+		background: var(--clr-bg);
+
+		transition-property: height;
+		transition-duration: var(--_transition-duration);
 	}
+
 	h2 {
-		font-size: 1em;
+		font-size: 1rem;
 	}
 	a {
 		text-decoration: none;
 		color: inherit;
-		font-weight: 500;
 	}
 
-	.ribbon {
-		position: sticky;
-		top: 0;
-
-		--content-max-width: 1450px;
-		justify-items: right;
-		color: var(--clr-bg);
-		background: var(--clr-primary);
-		padding-block: 0.5rem;
-		text-align: right;
-		font-size: 0.9rem;
-
-		a {
-			color: inherit;
-			text-decoration: underline;
-		}
-	}
 	nav {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		padding-block: 2rem;
+
+		padding-inline: 0;
+
+		transition-property: padding;
+		transition-duration: var(--_transition-duration);
 	}
 	.internal-links {
 		display: flex;
 		align-items: center;
-		gap: 1.5rem;
+		gap: 2.25rem;
 		font-weight: 500;
+
+		transition: gap var(--_transition-duration);
 
 		a:hover {
 			font-weight: 600;
@@ -78,9 +107,124 @@ import { SITE_TITLE } from '../consts';
 		visibility: hidden;
 	}
 
-	@media (max-width: 41rem) {
+	.mobile-button {
+		display: none;
+
+		background: none;
+		border: none;
+		color: inherit;
+		cursor: pointer;
+	}
+	.mobile-nav {
+		display: none;
+
+		position: fixed;
+		top: 0;
+		left: 0;
+		height: 100lvh;
+		width: 100vw;
+		z-index: calc(infinity);
+		
+		color: var(--clr-bg);
+		background: var(--clr-primary);
+
+		font-family: var(--ff-heading);
+		font-weight: 400;
+		font-size: 2rem;
+
+		padding-inline: 2rem;
+		padding-block: 3rem;
+
+		transform: translateX(100%);
+		transition-property: display transform;
+		transition-duration: 200ms;
+		transition-timing-function: ease-out;
+		transition-behavior: allow-discrete;
+
+		& ul {
+			list-style: none;
+			display: grid;
+			align-content: start;
+			gap: 1rem;
+	
+			& ul {
+				font-size: 1.25rem;
+				font-family: var(--ff-body);
+				gap: 0.375rem;
+				padding-inline-start: 1.125rem;
+				padding-block-start: 0.25rem;
+				font-weight: 500;
+			}
+		}
+
+		& a {
+			color: var(--clr-bg);
+
+			&:hover {
+				opacity: 0.7;
+			}
+		}
+
+		& h2 {
+			margin-block-start: auto;
+		}
+
+		& .mobile-button {
+			position: absolute;
+			top: 1.8rem;
+			right: 1rem;
+
+			transition: top var(--_transition-duration);
+		}
+	}
+
+	header.shrink {
+		height: 3.5rem;
+
+		& .mobile-nav .mobile-button {
+			top: 0.8rem;
+		}
+	}
+
+	@media (max-width: 44rem) {
 		.internal-links {
 			display: none;
 		}
+		.mobile-button {
+			display: flex;
+		}
+		.mobile-nav[data-open="true"] {
+			display: block;
+
+			transform: translateX(0);
+			transition-property: transform;
+			/* transition-duration: 250ms; */
+
+			@starting-style {
+				transform: translateX(100%);
+			}
+		}
+
+		header.shrink nav {
+			padding-inline: 0;
+		}
 	}
 </style>
+
+<script>
+	const header = document.getElementById("header");
+
+    const checkScroll = () => {
+		console.log(window.scrollY);
+
+		if (window.scrollY < 50) {
+			header?.classList.remove("shrink");
+		}
+		else {
+			header?.classList.add("shrink");
+		}
+    }
+
+    window.addEventListener("scroll", checkScroll);
+    checkScroll();
+</script>

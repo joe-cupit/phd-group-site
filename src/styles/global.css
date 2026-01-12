@@ -115,9 +115,13 @@ body {
   color: var(--clr-text);
   background: var(--clr-bg);
 }
+body:has(.mobile-nav[data-open="true"]) {
+  overflow: hidden;
+}
 
 main {
   flex: 1;
+  margin-block-start: 5.5rem;
 }
 section,
 header,
