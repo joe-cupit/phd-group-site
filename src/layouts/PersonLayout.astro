@@ -71,68 +71,81 @@ const linkIcons = {
     <PublicationsList filterAuthor={slug} />
   </section>
 
-  <style>
-    .hero {
-      display: grid;
-      grid-template-columns: 280px auto;
-      gap: 4ch;
-    }
-
-    .profile-image {
-      background: #0002;
-      width: 100%;
-      aspect-ratio: 3 / 4;
-
-      border-radius: 0.25rem;
-    }
-    .main {
-      display: grid;
-      grid-template-rows: min-content;
-      gap: 1.25rem;
-      padding-block: 0.5rem;
-    }
-    .position {
-      font-weight: 500;
-      line-height: 1.1;
-    }
-    .name {
-      font-size: 3rem;
-      font-weight: 800;
-      line-height: 1.1;
-    }
-
-    .links {
-      display: grid;
-      gap: 0.25rem;
-      list-style: none;
-      padding-block: 0.5rem;
-    }
-    .icon-links {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      gap: 1ch;
-
-      & li {
-        width: 2.5ch;
-        height: 2.5ch;
-      }
-      & a {
-        width: 100%;
-        height: 100%;
-      }
-    }
-
-    .publications-section {
-      margin-block-start: 3rem;
-
-      & h2 {
-        font-size: 1rem;
-        font-weight: 500;
-        text-transform: uppercase;
-        margin-block-end: 1rem;
-      }
-    }
-  </style>
 </Layout>
+
+<style>
+  .hero {
+    display: grid;
+    grid-template-columns: 280px auto;
+    gap: 4ch;
+  }
+
+  .profile-image {
+    background: #0002;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+
+    border-radius: 0.25rem;
+  }
+  .main {
+    display: grid;
+    grid-template-rows: min-content;
+    gap: 1.25rem;
+    padding-block: 0.25rem;
+  }
+  .position {
+    font-weight: 500;
+    line-height: 1.1;
+  }
+  .name {
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1.2;
+  }
+
+  .links {
+    display: grid;
+    gap: 0.25rem;
+    list-style: none;
+    padding-block: 0.5rem;
+  }
+  .icon-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1ch;
+
+    & li {
+      width: 2.5ch;
+      height: 2.5ch;
+    }
+    & a {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .publications-section {
+    margin-block-start: 3rem;
+
+    & h2 {
+      margin-block-end: 1.25rem;
+    }
+  }
+
+  @media (max-width: 47rem) {
+    .hero {
+      grid-template-columns: 1fr;
+      justify-items: center;
+    }
+    .profile-image {
+      width: 100%;
+      max-width: min(21rem, 80%);
+      margin-inline: auto;
+    }
+    .links {
+      display: none;
+    }
+  }
+</style>

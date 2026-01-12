@@ -79,8 +79,9 @@ const researchAreas = (await getCollection("research")).sort((a, b) => a.data.po
 		justify-content: space-between;
 
 		padding-inline: 0;
+		font-size: 1.1rem;
 
-		transition-property: padding;
+		transition-property: padding font-size;
 		transition-duration: var(--_transition-duration);
 	}
 	.internal-links {
@@ -92,6 +93,7 @@ const researchAreas = (await getCollection("research")).sort((a, b) => a.data.po
 		transition: gap var(--_transition-duration);
 
 		a:hover {
+			color: var(--clr-primary);
 			font-weight: 600;
 		}
 	}
@@ -181,6 +183,9 @@ const researchAreas = (await getCollection("research")).sort((a, b) => a.data.po
 	header.shrink {
 		height: 3.5rem;
 
+		& nav {
+			font-size: 1rem;
+		}
 		& .mobile-nav .mobile-button {
 			top: 0.8rem;
 		}
