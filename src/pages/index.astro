@@ -5,23 +5,38 @@ import Button from "../components/Button.astro";
 import PublicationsList from "../components/PublicationsList.astro";
 
 import { Image } from "astro:assets";
+import Image11 from "../assets/1.1.png";
+import Image21 from "../assets/2.1.png";
+import Image31 from "../assets/3.1.png";
+import Image41 from "../assets/4.1.png";
+
 import UnileverLogo from "../assets/logos/unilever.svg";
 import CrodaLogo from "../assets/logos/croda.png";
 import BPLogo from "../assets/logos/bp.png";
+import AppliedMaterialsLogo from "../assets/logos/applied-materials.png";
+import CPACTLogo from "../assets/logos/cpact.png";
+import KeitLogo from "../assets/logos/keit-industrial-analytics.png";
+import JohnsonMattheyLogo from "../assets/logos/johnson-matthey.svg";
 ---
 
 <Layout>
   <section style="padding-block: 0;">
     <div class="hero">
-      <h1>Applying Data Intelligence to Accelerate Chemical Process Digital Transformation</h1>
-      <Button href="/research">Find out more</Button>
+      <h1>Integrating <span>Domain Knowledge</span> and <span>Data Intelligence</span> for Digital Transformation of Chemical and Biochemical Processes</h1>
+      <Button href="/research" size="big">Find out more</Button>
     </div>
   </section>
 
   <section>
     <div class="about">
       <div class="text">
-        <p>We are a group of researchers at the University of Manchester combining process systems engineering with interpretable machine learning for data-driven decision making in complex chemical and biochemical processes.</p>
+        <h2>We are an interdisciplinary research group working at the interface of chemical engineering, sustainable manufacturing, and machine learning.</h2>
+        <p>
+          <!-- We develop interpretable, data-driven and hybrid digital twins that integrate domain knowledge with AI. -->
+          Our work accelerates materials design, reaction understanding, process development, real-time optimisation, and autonomous operation,
+          enabling robust and circular manufacturing solutions.
+          We work in close partnership with industry across formulation, specialty chemicals, and biopharmaceuticals.
+        </p>
         <Button href="/about">More about us</Button>
       </div>
       <div class="photo"></div>
@@ -29,22 +44,39 @@ import BPLogo from "../assets/logos/bp.png";
   </section>
 
   <section class="research-section">
-    <h2>Research Areas</h2>
+    <h2 class="caps-title">Research Areas</h2>
     <div class="research">
       <div class="research-area">
-        <h3>Digital twin modelling</h3>
-        <p>Hybrid model based digital twins for bioprocess predictive modelling, optimisation, control, and metabolic network simulation.</p>
-        <Button href="/research/digital-twin-modelling">Find out more</Button>
+        <div class="text">
+          <h3>Scientific machine learning for modelling and optimisation</h3>
+          <p>We develop predictive hybrid models that integrate physical knowledge with machine learning to represent complex chemical and biochemical systems. These models underpin dynamic optimisation and control strategies that improve process performance and robustness under uncertainty.</p>
+          <Button href="/research/machine-learning">Find out more</Button>
+        </div>
+        <Image src={Image11} alt="" />
+      </div>
+      <div class="research-area reversed">
+        <div class="text">
+          <h3>Augmented intelligence and self-driving laboratories for knowledge discovery</h3>
+          <p>We combine interpretable AI with model-based experimental design to accelerate mechanistic understanding, reaction kinetics identification, and system knowledge discovery. This enables rapid process development and upscaling with minimal experimental trials.</p>
+          <Button href="/research/self-driving-laboratories">Find out more</Button>
+        </div>
+        <Image src={Image21} alt="" />
       </div>
       <div class="research-area">
-        <h3>Data-driven processes</h3>
-        <p>Machine learning enabled data-driven techniques for industrial manufacturing process quality control and process flow diagram development.</p>
-        <Button href="/research/digital-twin-modelling">Find out more</Button>
+        <div class="text">
+          <h3>Industrial data analytics for process monitoring and decision-making</h3>
+          <p>We apply data-driven and statistical modelling to extract actionable insights from industrial process data for monitoring, fault diagnosis, and predictive maintenance. Our methods support adaptive decision-making and operational space design to enhance flexibility, robustness, and quality by design.</p>
+          <Button href="/research/industrial-data-analytics">Find out more</Button>
+        </div>
+        <Image src={Image31} alt="" />
       </div>
-      <div class="research-area">
-        <h3>Interpretable AI</h3>
-        <p>Interpretable AI based frameworks to discover physical knowledge and generate mechanistic expressions for reaction engineering applications.</p>
-        <Button href="/research/digital-twin-modelling">Find out more</Button>
+      <div class="research-area reversed">
+        <div class="text">
+          <h3>Generative AI for sustainable chemistry discovery and design</h3>
+          <p>We develop generative and multimodal AI models to enable inverse design of formulations and materials with sustainability embedded from the outset. Our work also advances chemical property prediction and sustainable synthesis pathway planning for next-generation chemical products.</p>
+          <Button href="/research/generative-ai">Find out more</Button>
+        </div>
+        <Image src={Image41} alt="" />
       </div>
     </div>
   </section>
@@ -56,11 +88,15 @@ import BPLogo from "../assets/logos/bp.png";
   </section>
 
   <section class="industrial-collaborators">
-    <h2>Inustrial Collaborators</h2>
+    <h2 class="caps-title">Industrial Collaborators</h2>
     <div class="industrial-logos">
       <Image src={UnileverLogo} alt="Unilever Logo" />
-      <Image src={CrodaLogo} alt="Croda Logo" style="max-height: 50%" />
+      <Image src={CPACTLogo} alt="CPACT Logo" class="half-height" />
+      <Image src={CrodaLogo} alt="Croda Logo" class="half-height" />
       <Image src={BPLogo} alt="BP Logo" />
+      <Image src={JohnsonMattheyLogo} alt="Johnson Matthey Logo" class="half-height" />
+      <Image src={KeitLogo} alt="KEIT Industrial Analytics Logo" class="half-height" />
+      <Image src={AppliedMaterialsLogo} alt="Applied Materials Logo" class="half-height" />
     </div>
   </section>
 </Layout>
@@ -68,11 +104,6 @@ import BPLogo from "../assets/logos/bp.png";
 <style>
   section {
     --content-max-width: 1350px;
-  }
-  h2 {
-    font-size: 1rem;
-    font-weight: 500;
-    text-transform: uppercase;
   }
 
   .hero {
@@ -82,13 +113,21 @@ import BPLogo from "../assets/logos/bp.png";
     text-align: center;
     gap: 2rem;
 
-    height: clamp(30rem, 80svh, 50rem);
-    padding-block-end: 5%;
+    /* height: clamp(30rem, 80svh, 50rem); */
+    padding-block-start: 5rem;
+    padding-block-end: 10rem;
 
     & h1 {
-      max-width: 28ch;
-      font-size: 2.5rem;
-      font-weight: 700;
+      max-width: 35ch;
+      font-size: clamp(2rem, 4vw, 3rem);
+      /* font-size: 3.5vw; */
+      font-weight: 600;
+
+      & span {
+        color: var(--clr-primary);
+        /* text-decoration: underline;
+        text-decoration-thickness: 0.075lh; */
+      }
     }
   }
 
@@ -96,24 +135,48 @@ import BPLogo from "../assets/logos/bp.png";
     display: grid;
     grid-template-columns: 1.2fr 1fr;
     gap: 3rem;
-    align-content: center;
-    justify-items: center;
+    align-items: center;
+    justify-content: center;
 
+    & h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+
+      & span {
+        color: var(--clr-primary);
+        /* text-decoration: underline;
+        text-decoration-thickness: 3px; */
+      }
+    }
     & .text {
       display: grid;
-      gap: 0.5lh;
       align-content: center;
+      gap: 0.25rem;
 
-      font-family: var(--ff-heading);
+      /* font-family: var(--ff-heading);
       font-weight: 500;
-      font-size: 1.625rem;
+      font-size: 1.625rem; */
 
       padding-block: 1rem;
+
+      & p {
+        padding-block-end: 1rem;
+      }
     }
     & .photo {
       background: var(--clr-bg-dark);
       width: 100%;
       aspect-ratio: 4 / 3;
+    }
+  }
+  @media (max-width: 1070px) {
+    .about {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .about .photo {
+      max-width: 40rem;
     }
   }
 
@@ -122,24 +185,64 @@ import BPLogo from "../assets/logos/bp.png";
   }
   .research {
     display: grid;
-    gap: 4rem;
-    margin-block-start: 0.5rem;
+    gap: 8rem;
+    margin-block-start: 2rem;
   }
   .research-area {
     display: grid;
+    gap: 4rem;
+    grid-template-columns: 1.25fr 1fr;
+  }
+  .research-area .text {
+    display: grid;
+    align-content: center;
 
     & h3 {
       font-family: var(--ff-heading);
       font-size: 2rem;
+      font-weight: 600;
+      max-width: 31ch;
+      line-height: 1.3;
+      margin-block-end: 0.5lh;
     }
-    & a {
-      margin-block-start: 1rem;
+    & p {
+      max-width: 62ch;
+      margin-block-end: 1.25lh;
+    }
+  }
+  .research-area img {
+    object-fit: contain;
+    mix-blend-mode: multiply;
+  }
+  .research-area.reversed {
+    grid-template-columns: 1fr 1.2fr;
+
+    & img {
+      order: -1;
+    }
+  }
+
+  @media (max-width: 1070px) {
+    .research {
+      gap: 5rem;
+    }
+    .research-area {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+
+    .research-area img {
+      display: none;
+    }
+    .research-area.reversed img {
+      order: 1;
     }
   }
 
   .publications-section {
     --content-max-width: 900px;
-    gap: 1.75rem;
+    row-gap: 1.75rem;
     justify-items: center;
 
     & h2 {
@@ -148,19 +251,32 @@ import BPLogo from "../assets/logos/bp.png";
   }
 
   .industrial-collaborators {
+    /* --content-max-width: 1100px; */
     justify-items: center;
-    padding-block: 6rem;
+    padding-block: 8rem;
   }
   .industrial-logos {
     display: flex;
+    flex-wrap: wrap;
+    /* display: grid;
+    grid-template-columns: repeat(3, minmax(10rem, 1fr));
+    grid-auto-rows: 5rem; */
+    column-gap: 3rem;
+    row-gap: 2.5rem;
+
     align-items: center;
-    gap: 6rem;
-    height: 5rem;
-    margin-block-start: 1rem;
+    justify-content: center;
+
+    /* height: 5rem; */
+    margin-block-start: 1.5rem;
 
     & img {
       object-fit: contain;
+      height: 4rem;
       width: fit-content;
+    }
+    & img.half-height {
+      height: 2rem;
     }
   }
 </style>

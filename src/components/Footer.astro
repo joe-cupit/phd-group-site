@@ -4,50 +4,120 @@ import { SITE_TITLE } from '../consts';
 
 <footer>
 	<div class="main">
-		<p>Group</p>
-		<ul>
-			<li><a href="/">Home</a></li>
-			<li><a href="/research">Research</a></li>
-			<li><a href="/publications">Publications</a></li>
-			<li><a href="/group">Group</a></li>
-			<li><a href="/about">About</a></li>
-		</ul>
+		<h2>{SITE_TITLE}</h2>
+		<div class="main-right">
+			<div>
+				<h3 class="caps-title">Research Areas</h3>
+				<ul>
+					<li><a href="/research/machine-learning">Scientific machine learning</a></li>
+					<li><a href="/research/self-driving-laboratories">Augmented intelligence</a></li>
+					<li><a href="/research/industrial-data-analytics">Industrial data analytics</a></li>
+					<li><a href="/research/generative-ai">Generative AI</a></li>
+				</ul>
+			</div>
+			<div>
+				<h3 class="caps-title">About Us</h3>
+				<ul>
+					<li><a href="/">Home</a></li>
+					<li><a href="/about">About</a></li>
+					<li><a href="/research">Research</a></li>
+					<li><a href="/group">Group</a></li>
+					<li><a href="/publications">Publications</a></li>
+				</ul>
+			</div>
+		</div>
 	</div>
 	<div class="base">
-		<p>&copy; 2026 {SITE_TITLE}.</p>
+		<div>
+			<p>&copy; {new Date().getFullYear()} {SITE_TITLE}</p>
+			<p>Designed & developed by <a href="/group/joe-cupit">Joe Cupit</a>.</p>
+		</div>
 	</div>
 </footer>
 <style>
 	footer {
+		--content-max-width: 1350px;
 		background: var(--clr-bg-dark);
+	}
 
-		& > div {
-			padding-inline: 4rem;
-		}
+	h2 {
+		font-size: 1.25rem;
+		font-weight: 600;
 	}
 
 	.main,
-	.base {
+	.base > div {
 		display: flex;
+		gap: 2rem;
 		justify-content: space-between;
 	}
 	
 	.main {
-		padding-block: 2rem;
+		padding-block: 2.5rem;
+		text-align: left;
 
+		& h3 {
+			margin-block-end: 0.5rem;
+			font-size: 0.9rem;
+		}
 		& ul {
+			display: grid;
+			gap: 0.125rem;
 			list-style: none;
 			font-weight: 500;
 		}
 		& a {
 			text-decoration: none;
+			min-width: fit-content;
 		}
 	}
+	.main-right {
+		display: flex;
+		gap: 5rem;
+		text-align: right;
+	}
+
 	.base {
+		display: inherit;
+		grid-template-columns: inherit;
+		grid-column: full-width;
+
 		font-size: 0.9rem;
-		padding-block: 1rem;
+		padding-block: 0.5lh;
 
 		color: var(--clr-bg);
 		background: var(--clr-primary);
+
+		& a {
+			color: inherit;
+			text-decoration: none;
+
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+		> * {
+			grid-column: content;
+			flex-wrap: wrap-reverse;
+		}
+	}
+
+	@media (max-width: 40rem) {
+		.main,
+		.main-right {
+			display: flex;
+			flex-direction: column;
+			gap: 2.5rem;
+			align-items: center;
+			text-align: center;
+		}
+
+		.base > div {
+			display: flex;
+			gap: 0.375lh;
+			flex-direction: column-reverse;
+			text-align: center;
+			padding-block: 0.5lh;
+		}
 	}
 </style>

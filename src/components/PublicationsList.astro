@@ -84,16 +84,20 @@ const months = [
   }
 
   .publications {
+    container-type: inline-size;
+
     list-style: none;
 
     display: grid;
-    grid-template-columns: 9ch 1fr;
-    row-gap: 1.25rem;
-    column-gap: 1ch;
+    /* grid-template-columns: 9ch 1fr; */
+    row-gap: 1.5rem;
+    /* column-gap: 1ch; */
     width: 100%;
 
     & li {
-      display: contents;
+      display: grid;
+      grid-template-columns: 9ch 1fr;
+      column-gap: 1ch;
     }
 
     & .date {
@@ -120,6 +124,13 @@ const months = [
       font-size: 0.9rem;
       line-height: 1.2;
       margin-block-start: 0.25rem;
+    }
+  }
+
+  @container (max-width: 34rem) {
+    .publications li {
+      grid-template-columns: 1fr;
+      row-gap: 0.25lh;
     }
   }
 </style>

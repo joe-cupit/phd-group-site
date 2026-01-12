@@ -2,17 +2,18 @@
 import { SITE_TITLE } from '../consts';
 ---
 
-<div class="ribbon">
-	Ribbon text
-</div>
+<!-- <div class="ribbon page-grid">
+	<p>Ribbon text</p>
+</div> -->
 <header>
 	<nav>
 		<h2><a href="/">{SITE_TITLE}</a></h2>
 		<div class="internal-links">
-			<a href="/">Home</a>
-			<a href="/research">Research</a>
-			<a href="/publications">Publications</a>
-			<a href="/group">Group</a>
+			<!-- <a href="/" data-text="Home">Home</a> -->
+			<a href="/about" data-text="About">About</a>
+			<a href="/research" data-text="Research">Research</a>
+			<a href="/group" data-text="Group">Group</a>
+			<a href="/publications" data-text="Publications">Publications</a>
 		</div>
 	</nav>
 </header>
@@ -21,6 +22,7 @@ import { SITE_TITLE } from '../consts';
 		position: sticky;
 		top: 0;
 		background: var(--clr-bg);
+		z-index: calc(infinity);
 	}
 	h2 {
 		font-size: 1em;
@@ -28,12 +30,17 @@ import { SITE_TITLE } from '../consts';
 	a {
 		text-decoration: none;
 		color: inherit;
+		font-weight: 500;
 	}
 
 	.ribbon {
+		position: sticky;
+		top: 0;
+
+		--content-max-width: 1450px;
+		justify-items: right;
 		color: var(--clr-bg);
 		background: var(--clr-primary);
-		padding-inline: 2rem;
 		padding-block: 0.5rem;
 		text-align: right;
 		font-size: 0.9rem;
@@ -47,16 +54,33 @@ import { SITE_TITLE } from '../consts';
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		padding-block: 1rem;
-		padding-inline: 2rem;
+		padding-block: 2rem;
 	}
 	.internal-links {
 		display: flex;
 		align-items: center;
 		gap: 1.5rem;
+		font-weight: 500;
 
 		a:hover {
-			font-weight: 500;
+			font-weight: 600;
+		}
+	}
+	.internal-links a {
+		text-align: center;
+	}
+	.internal-links a::before {
+		display: block;
+		content: attr(data-text);
+		font-weight: bold;
+		height: 0;
+		overflow: hidden;
+		visibility: hidden;
+	}
+
+	@media (max-width: 41rem) {
+		.internal-links {
+			display: none;
 		}
 	}
 </style>
