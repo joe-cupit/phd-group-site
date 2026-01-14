@@ -22,7 +22,7 @@ const researchAreas = (await getCollection("research")).sort((a, b) => a.data.po
   <section style="padding-block: 0;">
     <div class="hero">
       <h1>Integrating <span>Domain Knowledge</span> and <span>Data Intelligence</span> for Digital Transformation of Chemical and Biochemical Processes</h1>
-      <Button href="/research" size="big">Find out more</Button>
+      <Button href="/research">Explore our research</Button>
     </div>
   </section>
 
@@ -30,12 +30,12 @@ const researchAreas = (await getCollection("research")).sort((a, b) => a.data.po
     <div class="about">
       <div class="text">
         <h2>We are an interdisciplinary research group working at the interface of chemical engineering, sustainable manufacturing, and machine learning.</h2>
-        <p>
-          <!-- We develop interpretable, data-driven and hybrid digital twins that integrate domain knowledge with AI. -->
+        <!-- We develop interpretable, data-driven and hybrid digital twins that integrate domain knowledge with AI. -->
+        <!-- <p>
           Our work accelerates materials design, reaction understanding, process development, real-time optimisation, and autonomous operation,
           enabling robust and circular manufacturing solutions.
           We work in close partnership with industry across formulation, specialty chemicals, and biopharmaceuticals.
-        </p>
+        </p> -->
         <Button href="/about">More about us</Button>
       </div>
       <div class="photo"></div>
@@ -92,9 +92,9 @@ const researchAreas = (await getCollection("research")).sort((a, b) => a.data.po
     text-align: center;
     gap: 2rem;
 
-    /* height: clamp(30rem, 80svh, 50rem); */
-    padding-block-start: 5rem;
-    padding-block-end: 10rem;
+    height: clamp(30rem, 50svh, 40rem);
+    /* padding-block-start: 8rem;
+    padding-block-end: 10rem; */
 
     & h1 {
       max-width: 35ch;
@@ -109,16 +109,21 @@ const researchAreas = (await getCollection("research")).sort((a, b) => a.data.po
       }
     }
   }
+  @media (max-width: 42.5rem) {
+    .hero h1 {
+      font-size: 1.825rem;
+    }
+  }
 
   .about {
     display: grid;
-    grid-template-columns: 1.2fr 1fr;
+    grid-template-columns: 1fr 1.2fr;
     gap: 3rem;
     align-items: center;
     justify-content: center;
 
     & h2 {
-      font-size: 1.5rem;
+      font-size: 1.75rem;
       font-weight: 600;
 
       & span {
@@ -130,7 +135,7 @@ const researchAreas = (await getCollection("research")).sort((a, b) => a.data.po
     & .text {
       display: grid;
       align-content: center;
-      gap: 0.25rem;
+      gap: 1.5rem;
 
       /* font-family: var(--ff-heading);
       font-weight: 500;
