@@ -22,7 +22,7 @@ const researchAreas = (await getCollection("research")).sort((a, b) => a.data.po
   <section style="padding-block: 0;">
     <div class="hero">
       <h1>Integrating <span>Domain Knowledge</span> and <span>Data Intelligence</span> for Digital Transformation of Chemical and Biochemical Processes</h1>
-      <Button href="/phd-group-website/research">Explore our research</Button>
+      <Button href="/phd-group-site/research">Explore our research</Button>
     </div>
   </section>
 
@@ -36,7 +36,7 @@ const researchAreas = (await getCollection("research")).sort((a, b) => a.data.po
           enabling robust and circular manufacturing solutions.
           We work in close partnership with industry across formulation, specialty chemicals, and biopharmaceuticals.
         </p> -->
-        <Button href="/phd-group-website/about">More about us</Button>
+        <Button href="/phd-group-site/about">More about us</Button>
       </div>
       <div class="photo"></div>
     </div>
@@ -51,7 +51,7 @@ const researchAreas = (await getCollection("research")).sort((a, b) => a.data.po
             <div class="text">
               <h3>{area.data.title}</h3>
               <p>{area.data.summary}</p>
-              <Button href={`/research/${area.id}`}>Find out more</Button>
+              <Button href={`/phd-group-site/research/${area.id}`}>Find out more</Button>
             </div>
             {area.data.coverImage && <Image src={area.data.coverImage} alt={area.data.title} />}
           </div>
@@ -63,7 +63,7 @@ const researchAreas = (await getCollection("research")).sort((a, b) => a.data.po
   <section class="publications-section">
     <h2>Recent Publications</h2>
     <PublicationsList limit={4} />
-    <Button href="/phd-group-website/publications">See more publications</Button>
+    <Button href="/phd-group-site/publications">See more publications</Button>
   </section>
 
   <section class="industrial-collaborators">

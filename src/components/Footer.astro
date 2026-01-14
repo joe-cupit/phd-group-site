@@ -19,7 +19,7 @@ const researchAreas = (await getCollection("research")).sort((a, b) => a.data.po
                     <ul>
                         {researchAreas.map((researchArea) => {
                             return (
-                                <li><a href={`/research/${researchArea.id}`}>{researchArea.data.shortTitle}</a></li>
+                                <li><a href={`/phd-group-site/research/${researchArea.id}`}>{researchArea.data.shortTitle}</a></li>
                             )
                         })}
                     </ul>
@@ -27,18 +27,18 @@ const researchAreas = (await getCollection("research")).sort((a, b) => a.data.po
                 <div>
                     <h3 class="caps-title">About Us</h3>
                     <ul>
-                        <li><a href="/phd-group-website/">Home</a></li>
-                        <li><a href="/phd-group-website/about">About</a></li>
-                        <li><a href="/phd-group-website/research">Research</a></li>
-                        <li><a href="/phd-group-website/group">Group</a></li>
-                        <li><a href="/phd-group-website/publications">Publications</a></li>
+                        <li><a href="/phd-group-site/">Home</a></li>
+                        <li><a href="/phd-group-site/about">About</a></li>
+                        <li><a href="/phd-group-site/research">Research</a></li>
+                        <li><a href="/phd-group-site/group">Group</a></li>
+                        <li><a href="/phd-group-site/publications">Publications</a></li>
                     </ul>
                 </div>
             </div>
         </div>
         <div class="copy">
             <p>&copy; {new Date().getFullYear()} {SITE_TITLE}</p>
-            <p>Designed & developed by <a href="/phd-group-website/group/joe-cupit">Joe Cupit</a>.</p>
+            <p>Designed & developed by <a href="/phd-group-site/group/joe-cupit">Joe Cupit</a>.</p>
         </div>
     </div>
 </footer>

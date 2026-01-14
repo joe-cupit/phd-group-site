@@ -6,7 +6,7 @@ const { person, featured } = Astro.props;
 ---
 
 <article class={"person" + (featured ? " featured" : "")}>
-    <a href={`/group/${person.id}`} class="image">
+    <a href={`/phd-group-site/group/${person.id}`} class="image">
         <Image src={person.data.profileImage ?? ExampleImage} alt="" />
     </a>
 
@@ -16,7 +16,7 @@ const { person, featured } = Astro.props;
                 ? <h2 class="position">{person.data.position}</h2>
                 : <p class="position">{person.data.position}</p>
             }
-            <a href={`/group/${person.id}`}>
+            <a href={`/phd-group-site/group/${person.id}`}>
                 <h3 class="name">{person.data.name}</h3>
             </a>
         </div>
