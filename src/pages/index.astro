@@ -156,11 +156,16 @@ const researchAreas = (await getCollection("research")).sort((a, b) => a.data.po
   @media (max-width: 1070px) {
     .about {
       display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
+      flex-direction: column-reverse;
+      gap: 1rem;
     }
     .about .photo {
       max-width: 40rem;
+    }
+  }
+  @media (max-width: 42.5rem) {
+    .about h2 {
+      font-size: 1.5rem;
     }
   }
 
@@ -253,6 +258,7 @@ const researchAreas = (await getCollection("research")).sort((a, b) => a.data.po
 
     /* height: 5rem; */
     margin-block-start: 1.5rem;
+    padding-inline: 1rem;
 
     & img {
       object-fit: contain;

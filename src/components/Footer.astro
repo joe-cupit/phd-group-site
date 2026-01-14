@@ -6,122 +6,154 @@ const researchAreas = (await getCollection("research")).sort((a, b) => a.data.po
 ---
 
 <footer>
-	<div class="main">
-		<h2>{SITE_TITLE}</h2>
-		<div class="main-right">
-			<div>
-				<h3 class="caps-title">Research Areas</h3>
-				<ul>
-					{researchAreas.map((researchArea) => {
-						return (
-							<li><a href={`/research/${researchArea.id}`}>{researchArea.data.shortTitle}</a></li>
-						)
-					})}
-				</ul>
-			</div>
-			<div>
-				<h3 class="caps-title">About Us</h3>
-				<ul>
-					<li><a href="/">Home</a></li>
-					<li><a href="/about">About</a></li>
-					<li><a href="/research">Research</a></li>
-					<li><a href="/group">Group</a></li>
-					<li><a href="/publications">Publications</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
-	<div class="base">
-		<div>
-			<p>&copy; {new Date().getFullYear()} {SITE_TITLE}</p>
-			<p>Designed & developed by <a href="/group/joe-cupit">Joe Cupit</a>.</p>
-		</div>
-	</div>
+    <div class="contact">
+        <h2>Get in touch</h2>
+        <p>If you want to know more about us and our research, please email <a href="mailto:dongda.zhang@manchester.ac.uk">dongda.zhang@manchester.ac.uk</a>.</p>
+    </div>
+    <div class="base">
+        <div class="main">
+            <h2>{SITE_TITLE}</h2>
+            <div class="main-right">
+                <div>
+                    <h3 class="caps-title">Research Areas</h3>
+                    <ul>
+                        {researchAreas.map((researchArea) => {
+                            return (
+                                <li><a href={`/research/${researchArea.id}`}>{researchArea.data.shortTitle}</a></li>
+                            )
+                        })}
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="caps-title">About Us</h3>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/research">Research</a></li>
+                        <li><a href="/group">Group</a></li>
+                        <li><a href="/publications">Publications</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="copy">
+            <p>&copy; {new Date().getFullYear()} {SITE_TITLE}</p>
+            <p>Designed & developed by <a href="/group/joe-cupit">Joe Cupit</a>.</p>
+        </div>
+    </div>
 </footer>
 <style>
-	footer {
-		--content-max-width: 1350px;
-		background: var(--clr-bg-dark);
+    footer {
+        --content-max-width: 1350px;
+        background: var(--clr-bg-dark);
+    }
+
+	.contact {
+        display: grid;
+        align-items: center;
+        text-align: center;
+        gap: 0.5rem;
+
+		padding-block: 3rem;
+        padding-inline: 1rem;
+
+        & h2 {
+            font-size: 2rem;
+            font-weight: 600;
+        }
+        & p {
+            max-width: none;
+        }
 	}
 
-	h2 {
-		font-size: 1.25rem;
-		font-weight: 600;
-	}
+    .main,
+    .copy {
+        display: flex;
+        gap: 2rem;
+        justify-content: space-between;
+    }
+    
+    .main {
+        text-align: left;
 
-	.main,
-	.base > div {
-		display: flex;
-		gap: 2rem;
-		justify-content: space-between;
-	}
-	
-	.main {
-		padding-block: 2.5rem;
-		text-align: left;
+        & h3 {
+            margin-block-end: 0.5rem;
+            font-size: 0.9rem;
+            color: inherit;
+            opacity: 0.7;
+        }
+        & ul {
+            display: grid;
+            gap: 0.125rem;
+            list-style: none;
+            font-weight: 500;
+        }
+        & a {
+            text-decoration: none;
+            min-width: fit-content;
+        }
+    }
+    .main-right {
+        display: flex;
+        gap: 5rem;
+        text-align: right;
+    }
 
-		& h3 {
-			margin-block-end: 0.5rem;
-			font-size: 0.9rem;
-		}
-		& ul {
-			display: grid;
-			gap: 0.125rem;
-			list-style: none;
-			font-weight: 500;
-		}
-		& a {
-			text-decoration: none;
-			min-width: fit-content;
-		}
-	}
-	.main-right {
-		display: flex;
-		gap: 5rem;
-		text-align: right;
-	}
+    .base {
+        display: inherit;
+        grid-template-columns: inherit;
+        grid-column: full-width;
+		row-gap: 5rem;
 
-	.base {
-		display: inherit;
-		grid-template-columns: inherit;
-		grid-column: full-width;
+        padding-block: 2rem 1rem;
 
-		font-size: 0.9rem;
-		padding-block: 0.5lh;
+        color: var(--clr-bg);
+        background: var(--clr-primary);
 
-		color: var(--clr-bg);
-		background: var(--clr-primary);
 
-		& a {
-			color: inherit;
-			text-decoration: none;
+        & h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+        & a {
+            color: inherit;
+            text-decoration: none;
 
-			&:hover {
-				text-decoration: underline;
-			}
-		}
-		> * {
-			grid-column: content;
-			flex-wrap: wrap-reverse;
-		}
-	}
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+        > * {
+            grid-column: content;
+            flex-wrap: wrap-reverse;
+        }
+    }
+    .copy {
+        font-size: 0.9rem;
+        opacity: 0.8;
+    }
 
-	@media (max-width: 40rem) {
-		.main,
-		.main-right {
-			display: flex;
-			flex-direction: column;
-			gap: 2.5rem;
-			align-items: center;
-			text-align: center;
-		}
+    @media (max-width: 40rem) {
+        .base {
+            padding-block-start: 2.5rem;
+            row-gap: 4rem;
+        }
 
-		.base > div {
-			display: flex;
-			gap: 0.375lh;
-			flex-direction: column-reverse;
-			text-align: center;
-			padding-block: 0.5lh;
-		}
-	}
+        .main,
+        .main-right {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+            align-items: center;
+            text-align: center;
+        }
+
+        .copy {
+            display: flex;
+            gap: 0.375lh;
+            flex-direction: column-reverse;
+            text-align: center;
+            padding-block: 0.5lh;
+        }
+    }
 </style>

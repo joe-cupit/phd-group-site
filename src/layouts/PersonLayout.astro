@@ -6,8 +6,8 @@ import Layout from "./Layout.astro";
 import ExampleImage from "../assets/example-image.png";
 import PublicationsList from "../components/PublicationsList.astro";
 
-import LinkedInIcon from "../assets/icons/LinkedInIcon.astro";
-import GitHubIcon from "../assets/icons/GitHubIcon.astro";
+// import LinkedInIcon from "../assets/icons/LinkedInIcon.astro";
+// import GitHubIcon from "../assets/icons/GitHubIcon.astro";
 // import GoogleScholarIcon from "../assets/icons/GoogleScholarIcon.astro";
 // import OrcidIcon from "../assets/icons/OrcidIcon.astro";
 
@@ -18,8 +18,8 @@ type Props = {
 const { slug, name, position, email, profileImage, links } = Astro.props;
 
 const linkIcons = {
-  "LinkedIn": LinkedInIcon,
-  "GitHub": GitHubIcon,
+  // "LinkedIn": LinkedInIcon,
+  // "GitHub": GitHubIcon,
   // "Google Scholar": GoogleScholarIcon,
   // "ORCID": OrcidIcon,
 }
@@ -34,6 +34,7 @@ const linkIcons = {
         </div>
         {links &&
           <ul class="links">
+            <li><a href={`mailto:${email}`}>{email}</a></li>
             <div class="icon-links">
               {(Object.keys(linkIcons)).map((lname: string) => {
                 if (lname in links) {
@@ -59,7 +60,6 @@ const linkIcons = {
         </div>
         <div class="md">
           <slot />
-          <p>Email: <a href={`mailto:${email}`}>{email}</a></p>
         </div>
       </div>
     </div>
@@ -100,7 +100,7 @@ const linkIcons = {
   .name {
     font-size: 3rem;
     font-weight: 800;
-    line-height: 1.2;
+    line-height: 1.1;
   }
 
   .links {
