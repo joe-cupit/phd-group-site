@@ -10,13 +10,13 @@ const researchAreas = (await getCollection("research")).sort((a, b) => a.data.po
 
 <header id="header">
 	<nav>
-		<h2><a href="/">{SITE_TITLE}</a></h2>
+		<h2><a href="/phd-group-website/">{SITE_TITLE}</a></h2>
 		<div class="internal-links">
-			<!-- <a href="/" data-text="Home">Home</a> -->
-			<a href="/about" data-text="About">About</a>
-			<a href="/research" data-text="Research">Research</a>
-			<a href="/group" data-text="Group">Group</a>
-			<a href="/publications" data-text="Publications">Publications</a>
+			<!-- <a href="/phd-group-website/" data-text="Home">Home</a> -->
+			<a href="/phd-group-website/about" data-text="About">About</a>
+			<a href="/phd-group-website/research" data-text="Research">Research</a>
+			<a href="/phd-group-website/group" data-text="Group">Group</a>
+			<a href="/phd-group-website/publications" data-text="Publications">Publications</a>
 		</div>
 		<button class="mobile-button" onclick="document.getElementById('mobile-nav').dataset.open = 'true'">
 			<MenuIcon />
@@ -29,10 +29,10 @@ const researchAreas = (await getCollection("research")).sort((a, b) => a.data.po
 		</button>
 
 		<ul>
-			<li><a href="/" data-text="Home">Home</a></li>
-			<li><a href="/about" data-text="About">About</a></li>
+			<li><a href="/phd-group-website/" data-text="Home">Home</a></li>
+			<li><a href="/phd-group-website/about" data-text="About">About</a></li>
 			<li>
-				<a href="/research" data-text="Research">Research</a>
+				<a href="/phd-group-website/research" data-text="Research">Research</a>
 				<ul>
 					{researchAreas.map((researchArea) => {
 						return (
@@ -41,8 +41,8 @@ const researchAreas = (await getCollection("research")).sort((a, b) => a.data.po
 					})}
 				</ul>
 			</li>
-			<li><a href="/group" data-text="Group">Group</a></li>
-			<li><a href="/publications" data-text="Publications">Publications</a></li>
+			<li><a href="/phd-group-website/group" data-text="Group">Group</a></li>
+			<li><a href="/phd-group-website/publications" data-text="Publications">Publications</a></li>
 		</ul>
 	
 		<!-- <p>{SITE_TITLE}</p> -->
